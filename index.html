@@ -45,12 +45,12 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20 " id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-white font-bold no-underline hover:text-gray-800 nav-items" href="#valores">
+              <a class=" inline-block py-2 px-4 text-white  font-bold no-underline hover:text-gray-800 nav-items" href="#valores">
                 Valores
               </a>
             </li>
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-white font-bold no-underline hover:text-gray-800 nav-items" href="#ubicacion">
+              <a class=" inline-block py-2 px-4 text-white font-bold no-underline hover:text-gray-800 nav-items" href="#ubicacion">
                 Ubicación
               </a>
             </li>
@@ -330,6 +330,7 @@
       var navMenuDiv = document.getElementById("nav-content");
       var navMenu = document.getElementById("nav-toggle");
       var menuClick = document.getElementById("menuclick");
+      var toToggle = document.querySelectorAll(".nav-items");
 
       document.onclick = check;
       function check(e) {
@@ -342,10 +343,20 @@
             // click on the link
             if (navMenuDiv.classList.contains("hidden")) {
               navMenuDiv.classList.remove("hidden");
+              
+              for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-gray-800");
+                toToggle[i].classList.remove("text-white");
+              }
+
               //logo.classList.remove('absolute');
               //menuclick.classList.add('right-0', 'absolute');
             } else {
               navMenuDiv.classList.add("hidden");
+              for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-white");
+                toToggle[i].classList.remove("text-gray-800");
+              }
               //logo.classList.add('absolute');
               //menuclick.classList.remove('right-0', 'absolute');
             }
@@ -353,6 +364,10 @@
             // click both outside link and outside menu, hide menu
             //logo.classList.add('absolute');
             navMenuDiv.classList.add("hidden");
+            for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-white");
+                toToggle[i].classList.remove("text-gray-800");
+            }
             //menuclick.classList.remove('right-0', 'absolute');
           }
         }
